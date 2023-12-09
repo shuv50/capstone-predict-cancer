@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Predict Cancer - Azure Machine Learning Platform</title>
+    <title> Cancer - Azure Machine Learning Platform</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -54,6 +54,18 @@
 	<script>
 		document.getElementById('predict').addEventListener('click', function() {
 		  var hiddenElement = document.getElementById('cancer-type');
+		  if (document.querySelector('#Patient-Option').value !== "Default" ){
+			  document.getElementById("Patient-Barcode").style.display="block";
+		  }
+		 else{
+			 document.getElementById("Patient-Barcode").style.display="none"; 
+		 }
+		 if (document.querySelector('#TCGA-Option').value !== "Default" ){
+			  document.getElementById("TCGA-Barcode").style.display="block";
+		  }
+		 else{
+			 document.getElementById("TCGA-Barcode").style.display="none"; 
+		 }
 		  // Toggle the visibility of the element
 		  if (hiddenElement.style.display === 'none') {
 			hiddenElement.style.display = 'block';
@@ -75,24 +87,24 @@
                 <div class="fields d-block d-flex">
                   <div class="select-wrap one-third">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control" placeholder="Patient Barcode">
-                      <option value="">Patient Barcode</option>
+                    <select name="" id="Patient-Option" class="form-control" placeholder="Patient Barcode">
+                      <option value="Default">Patient Barcode</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
-					  <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
+		      <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
-					  <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
+		      <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                     </select>
                   </div>
 				  <div class="select-wrap one-third">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control" placeholder="Keyword search">
-						<option value="">TGCA Barcode</option>
+                    <select name="" id="TGCA-Option" class="form-control" placeholder="Keyword search">
+						<option value="Default">TGCA Barcode</option>
 						<option value="">TCGA-KN-8428-11A-01D-2311-10</option>
 						<option value="">TCGA-KN-8428-11A-01D-2311-10</option>
 						<option value="">TCGA-KN-8428-11A-01D-2311-10</option>
@@ -109,7 +121,8 @@
                 <input type="submit" id="predict" class="search-submit btn btn-primary" value="Predict">  
               </form>
             </div>
-			<p id="cancer-details" style="display: block;" data-scrollax="properties: { translateY: '30%', opacity: 1.6}" style="width: 1000px !important"><strong>Chromosome</strong> 0 &emsp; <strong>Chrom Start</strong> 1049635 &emsp; <strong>Chrom End</strong> 1049636 &emsp; <strong>Name</strong> C>T &emsp; <strong>Frequency</strong> 0.015152 <br><strong>Variant</strong> Missense_Mutation &emsp; <strong>Variant Type</strong> SNP &emsp; <strong>Tumor Sequence Allele 2</strong> T &emsp; <strong>Gender</strong> Male &emsp;</p>
+			<p id="Patient-Barcode" style="display: none;" data-scrollax="properties: { translateY: '30%', opacity: 1.6}" style="width: 1000px !important"><strong>Chromosome</strong> 0 &emsp; <strong>Chrom Start</strong> 1049635 &emsp; <strong>Chrom End</strong> 1049636 &emsp; <strong>Name</strong> C>T &emsp; <strong>Frequency</strong> 0.015152 </p> 
+			<p id="TCGA-Barcode" style="display: none;"><br><strong>Variant</strong> Missense_Mutation &emsp; <strong>Variant Type</strong> SNP &emsp; <strong>Tumor Sequence Allele 2</strong> T &emsp; <strong>Gender</strong> Male &emsp;</p>
 			<h1 id="cancer-type" style="display: block;" class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>BRCA - </strong> Breast Invasive Carcinoma (BRCA)</h1>
             
 			<script>
@@ -338,8 +351,8 @@
           <div class="col-md-5 heading-section ftco-animate">
           	<span class="subheading">Capstone</span>
             <h2 class="mb-4 pb-3"><strong>About</strong> Project</h2>
-            <p>In recent years, the global cancer burden has risen with the aging population, leading to a higher proportion of cancer-related deaths. Predicting cancer occurrence is crucial for cost reduction and improved survival rates. Genetic mutations significantly increase cancer risk, but analyzing thousands of genes is challenging.</p>
-            <p>Recent research employs deep learning and wearable sensors to predict cancer using gene and mutation data, considering individual genome variations. Complete gene pattern analysis is essential for understanding the risk in each cancer patient beyond specific gene associations.</p>
+            <p>In recent years, the global cancer burden has risen with the aging population, leading to a higher proportion of cancer-related deaths. ing cancer occurrence is crucial for cost reduction and improved survival rates. Genetic mutations significantly increase cancer risk, but analyzing thousands of genes is challenging.</p>
+            <p>Recent research employs deep learning and wearable sensors to  cancer using gene and mutation data, considering individual genome variations. Complete gene pattern analysis is essential for understanding the risk in each cancer patient beyond specific gene associations.</p>
             <p><a href="#" class="btn btn-primary btn-outline-primary mt-4 px-4 py-3">Read more</a></p>
           </div>
 					<div class="col-md-1"></div>
@@ -577,7 +590,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
               <h2>Let's Fight Cancer Together!</h2>
-              <p>Predicting cancer occurrence is crucial for reducing healthcare costs and improving survival rates. </p>
+              <p>ing cancer occurrence is crucial for reducing healthcare costs and improving survival rates. </p>
               <div class="row d-flex justify-content-center mt-5">
                 <div class="col-md-8">
                   <form action="#" class="subscribe-form">
@@ -600,7 +613,7 @@
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Data Science Capstone</h2>
-              <p>Predicting cancer occurrence is crucial for reducing healthcare costs and improving survival rates.</p>
+              <p>ing cancer occurrence is crucial for reducing healthcare costs and improving survival rates.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-linkedin"></span></a></li>
 				<li class="ftco-animate"><a href="#"><span class="icon-google"></span></a></li>
