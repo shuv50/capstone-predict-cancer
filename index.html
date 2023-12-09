@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Predict Cancer - Azure Machine Learning Platform</title>
+    <title> Predict Cancer - Azure Machine Learning Platform</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -50,17 +50,26 @@
     </div>
   </nav>
     <!-- END nav -->
-
-	<script>
-		document.getElementById('predict').addEventListener('click', function() {
-		  var hiddenElement = document.getElementById('cancer-type');
-		  // Toggle the visibility of the element
-		  if (hiddenElement.style.display === 'none') {
-			hiddenElement.style.display = 'block';
-		  } else {
-			hiddenElement.style.display = 'none';
+ 
+       <script>
+		function togglePatientVisibility(value){
+			if (value != "Default" ){
+			  document.getElementById("Patient-Barcode").style.display="block";
 		  }
-		});
+		 else{
+			 document.getElementById("Patient-Barcode").style.display="none"; 
+		 }
+		}
+		function toggleTGCAVisibility(value){
+			if (value != "Default" ){
+			  document.getElementById("TCGA-Barcode").style.display="block";
+		  }
+		 else{
+			 document.getElementById("TCGA-Barcode").style.display="none"; 
+		 }
+		}
+
+
 	</script>
     
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
@@ -75,24 +84,24 @@
                 <div class="fields d-block d-flex">
                   <div class="select-wrap one-third">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control" placeholder="Patient Barcode">
-                      <option value="">Patient Barcode</option>
+                    <select name="" id="Patient-Option" onchange="togglePatientVisibility(this.value)" class="form-control" placeholder="Patient Barcode">
+                      <option value="Default">Patient Barcode</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
-					  <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
+		      <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
-					  <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
+		      <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                       <option value="">TCGA-KN-8428-11A-01D-2311-10</option>
                     </select>
                   </div>
 				  <div class="select-wrap one-third">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control" placeholder="Keyword search">
-						<option value="">TGCA Barcode</option>
+                    <select name="" id="TGCA-Option" onchange="toggleTGCAVisibility(this.value)" class="form-control" placeholder="Keyword search">
+						<option value="Default">TGCA Barcode</option>
 						<option value="">TCGA-KN-8428-11A-01D-2311-10</option>
 						<option value="">TCGA-KN-8428-11A-01D-2311-10</option>
 						<option value="">TCGA-KN-8428-11A-01D-2311-10</option>
@@ -109,12 +118,21 @@
                 <input type="submit" id="predict" class="search-submit btn btn-primary" value="Predict">  
               </form>
             </div>
-			<p id="cancer-details" style="display: block;" data-scrollax="properties: { translateY: '30%', opacity: 1.6}" style="width: 1000px !important"><strong>Chromosome</strong> 0 &emsp; <strong>Chrom Start</strong> 1049635 &emsp; <strong>Chrom End</strong> 1049636 &emsp; <strong>Name</strong> C>T &emsp; <strong>Frequency</strong> 0.015152 <br><strong>Variant</strong> Missense_Mutation &emsp; <strong>Variant Type</strong> SNP &emsp; <strong>Tumor Sequence Allele 2</strong> T &emsp; <strong>Gender</strong> Male &emsp;</p>
-			<h1 id="cancer-type" style="display: block;" class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>BRCA - </strong> Breast Invasive Carcinoma (BRCA)</h1>
+			<p id="Patient-Barcode" style="display: none;" data-scrollax="properties: { translateY: '30%', opacity: 1.6}" style="width: 1000px !important"><strong>Chromosome</strong> 0 &emsp; <strong>Chrom Start</strong> 1049635 &emsp; <strong>Chrom End</strong> 1049636 &emsp; <strong>Name</strong> C>T &emsp; <strong>Frequency</strong> 0.015152 </p> 
+			<p id="TCGA-Barcode" style="display: none;"><br><strong>Variant</strong> Missense_Mutation &emsp; <strong>Variant Type</strong> SNP &emsp; <strong>Tumor Sequence Allele 2</strong> T &emsp; <strong>Gender</strong> Male &emsp;</p>
+			<h1 id="cancer-type" style="display: none;" class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>BRCA - </strong> Breast Invasive Carcinoma (BRCA)</h1>
             
 			<script>
 				document.getElementById('cancer-form').addEventListener('submit', function(event) {
 					event.preventDefault(); // Prevent the default form submission
+					
+					  var hiddenElement = document.getElementById('cancer-type');
+					  // Toggle the visibility of the element
+					  if (hiddenElement.style.display === 'none') {
+						hiddenElement.style.display = 'block';
+					  } else {
+						hiddenElement.style.display = 'none';
+					  }
 				
 					const data = {
 						"input_data": {
